@@ -1,4 +1,4 @@
-# Breast-Cancer-Prediction-using-machine-learning-logistic-regression-and-random-forest
+# Breast Cancer Prediction using Machine Learning Logistic Regression and Random Forest
 
 Breast cancer is a disease that occurs when malignant cells grow and develop in breast tissue. Tumors that form can be felt or detected through mammography.
 Some of the characteristics of breast cancer are:
