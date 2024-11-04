@@ -4,11 +4,13 @@ import pickle
 import matplotlib.pyplot as plt  # Import matplotlib for pie chart
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
+import os 
 
-# Load your data, models, and scaler here
-logistic_model = pickle.load(open("/model/logistic_model.pkl", "rb"))
-random_forest_model = pickle.load(open("/model/random_forest_model.pkl", "rb"))
-scaler = pickle.load(open("/model/scaler.pkl", "rb"))
+base_path = os.path.dirname(__file__)
+logistic_model = os.path.join(base_path, "model/logistic_model.pkl")
+random_forest_model = os.path.join(base_path, "model/random_forest_model.pkl")
+scaler = os.path.join(base_path, "model/scaler.pkl")
+
 
 # Sidebar for model selection
 st.sidebar.title("Model Selection")
