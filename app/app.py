@@ -7,9 +7,9 @@ from sklearn.linear_model import LogisticRegression
 import os 
 
 base_path = os.path.dirname(__file__)
-logistic_model = os.path.join(base_path, "model/logistic_model.pkl")
-random_forest_model = os.path.join(base_path, "model/random_forest_model.pkl")
-scaler = os.path.join(base_path, "model/scaler.pkl")
+logistic_model = os.path.join(base_path, "../model/logistic_model.pkl")
+random_forest_model = os.path.join(base_path, "../model/random_forest_model.pkl")
+scaler = os.path.join(base_path, "../model/scaler.pkl")
 
 
 # Sidebar for model selection
