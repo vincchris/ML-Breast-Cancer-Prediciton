@@ -70,19 +70,28 @@ input_data = pd.DataFrame([[radius_mean, texture_mean, perimeter_mean, area_mean
 # Scale the input data
 input_data = scaler.transform(input_data)
 
-# Title and prediction based on the selected model
+# Display prediction based on the selected model
 st.title("Breast Cancer Predictor")
 
 if model_choice == "Logistic Regression":
-    prediction = logistic_model.predict(input_data)
-    probability = logistic_model.predict_proba(input_data)
-    model_name = "Logistic Regression"
-else:
-    prediction = random_forest_model.predict(input_data)
-    probability = random_forest_model.predict_proba(input_data)
-    model_name = "Random Forest"
+    try:
+        prediction = logistic_model.predict(input_data)
+        probability = logistic_model.predict_proba(input_data)
+        model_name = "Logistic Regression"
+    except Exception as e:
+        st.error(f"Error with Logistic Regression: {e}")
+        st.stop()
 
-# Display prediction results
+elif model_choice == "Random Forest":
+    try:
+        prediction = random_forest_model.predict(input_data)
+        probability = random_forest_model.predict_proba(input_data)
+        model_name = "Random Forest"
+    except Exception as e:
+        st.error(f"Error with Random Forest: {e}")
+        st.stop()
+
+# Display results
 st.subheader(f"Cell Cluster Prediction using {model_name}")
 if prediction[0] == 1:
     st.write("The cell cluster is **Malignant**")
