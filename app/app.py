@@ -16,9 +16,9 @@ def load_model(file_path):
         st.stop()
 
 # Load models and scaler
-logistic_model = load_model("../logistic_model.pkl")
-random_forest_model = load_model("../random_forest_model.pkl")
-scaler = load_model("../scaler.pkl")
+logistic_model = load_model("../model/logistic_model.pkl")
+random_forest_model = load_model("../model/random_forest_model.pkl")
+scaler = load_model("../model/scaler.pkl")
 
 # Sidebar for model selection
 st.sidebar.title("Model Selection")
