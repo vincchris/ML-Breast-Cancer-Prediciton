@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 
 # Load your data, models, and scaler here
-logistic_model = pickle.load(open("../model/logistic_model.pkl", "rb"))
+logistic_model = pickle.load(open("../model/model_logistic.pkl", "rb"))
 random_forest_model = pickle.load(open("../model/random_forest_model.pkl", "rb"))
 scaler = pickle.load(open("../model/scaler.pkl", "rb"))
 
