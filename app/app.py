@@ -1,14 +1,24 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import os
 import matplotlib.pyplot as plt  # Import matplotlib for pie chart
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 
+# Helper function to load models
+def load_model(file_path):
+    if os.path.exists(file_path):
+        with open(file_path, "rb") as f:
+            return pickle.load(f)
+    else:
+        st.error(f"File not found: {file_path}")
+        st.stop()
+
 # Load models and scaler
-logistic_model = pickle.load(open("model/logistic_model.pkl", "rb"))
-random_forest_model = pickle.load(open("model/random_forest_model.pkl", "rb"))
-scaler = pickle.load(open("model/scaler.pkl", "rb"))
+logistic_model = load_model("../logistic_model.pkl")
+random_forest_model = load_model("../random_forest_model.pkl")
+scaler = load_model("../scaler.pkl")
 
 # Sidebar for model selection
 st.sidebar.title("Model Selection")
