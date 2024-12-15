@@ -5,19 +5,17 @@ import matplotlib.pyplot as plt  # Import matplotlib for pie chart
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 
-# Load models and scaler
-logistic_model = pickle.load(open("model/logistic_model.pkl", "rb"))
-random_forest_model = pickle.load(open("model/random_forest_model.pkl", "rb"))
-scaler = pickle.load(open("model/scaler.pkl", "rb"))
+# Load your data, models, and scaler here
+logistic_model = pickle.load(open("../model/model.pkl", "rb"))
+random_forest_model = pickle.load(open("../model/random_forest_model.pkl", "rb"))
+scaler = pickle.load(open("../model/scaler.pkl", "rb"))
 
 # Sidebar for model selection
 st.sidebar.title("Model Selection")
 model_choice = st.sidebar.selectbox("Choose the Machine Learning Model", ("Logistic Regression", "Random Forest"))
 
-# Sidebar inputs for feature values
+# Sidebar inputs for all features expected by the model
 st.sidebar.title("Cell Nuclei Measurements (Mean, SE, Worst)")
-
-# Mean measurements
 radius_mean = st.sidebar.slider("Radius (mean)", 0.0, 28.11, 14.13)
 texture_mean = st.sidebar.slider("Texture (mean)", 0.0, 39.28, 29.23)
 perimeter_mean = st.sidebar.slider("Perimeter (mean)", 0.0, 188.5, 91.97)
@@ -29,7 +27,6 @@ concave_points_mean = st.sidebar.slider("Concave Points (mean)", 0.0, 0.3, 0.1)
 symmetry_mean = st.sidebar.slider("Symmetry (mean)", 0.0, 0.3, 0.1)
 fractal_dimension_mean = st.sidebar.slider("Fractal Dimension (mean)", 0.0, 0.1, 0.06)
 
-# Standard error measurements
 radius_se = st.sidebar.slider("Radius (SE)", 0.0, 3.0, 0.2)
 texture_se = st.sidebar.slider("Texture (SE)", 0.0, 5.0, 1.0)
 perimeter_se = st.sidebar.slider("Perimeter (SE)", 0.0, 21.0, 2.0)
@@ -41,7 +38,6 @@ concave_points_se = st.sidebar.slider("Concave Points (SE)", 0.0, 0.05, 0.02)
 symmetry_se = st.sidebar.slider("Symmetry (SE)", 0.0, 0.08, 0.02)
 fractal_dimension_se = st.sidebar.slider("Fractal Dimension (SE)", 0.0, 0.03, 0.01)
 
-# Worst measurements
 radius_worst = st.sidebar.slider("Radius (worst)", 0.0, 50.0, 16.0)
 texture_worst = st.sidebar.slider("Texture (worst)", 0.0, 50.0, 25.0)
 perimeter_worst = st.sidebar.slider("Perimeter (worst)", 0.0, 250.0, 100.0)
@@ -53,7 +49,7 @@ concave_points_worst = st.sidebar.slider("Concave Points (worst)", 0.0, 0.3, 0.1
 symmetry_worst = st.sidebar.slider("Symmetry (worst)", 0.0, 0.6, 0.3)
 fractal_dimension_worst = st.sidebar.slider("Fractal Dimension (worst)", 0.0, 0.2, 0.1)
 
-# Prepare input data
+# Prepare the input data with correct column names
 input_data = pd.DataFrame([[radius_mean, texture_mean, perimeter_mean, area_mean, smoothness_mean,
                             compactness_mean, concavity_mean, concave_points_mean, symmetry_mean, fractal_dimension_mean,
                             radius_se, texture_se, perimeter_se, area_se, smoothness_se, compactness_se,
