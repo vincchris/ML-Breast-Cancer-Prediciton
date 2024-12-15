@@ -69,7 +69,7 @@ def main():
 
     # Logistic Regression
     logistic_model, logistic_scaler = create_logistic_regression_model(data)
-    with open('../model/logistic_model.pkl', 'wb') as f:
+    with open('../model/model_logistic.pkl', 'wb') as f:
         pickle.dump(logistic_model, f, protocol=pickle.HIGHEST_PROTOCOL)
     with open('../model/logistic_scaler.pkl', 'wb') as f:
         pickle.dump(logistic_scaler, f, protocol=pickle.HIGHEST_PROTOCOL)
